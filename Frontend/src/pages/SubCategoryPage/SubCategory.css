@@ -1,0 +1,66 @@
+.table-container {
+    margin: 20px;
+    overflow-x: auto;
+    width: 90%;
+}
+
+.subcategory-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+}
+.subcategory-table tbody tr:hover{
+    background-color: #858585;
+}
+.subcategory-table th,
+.subcategory-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.subcategory-table thead {
+    background-color: black;
+    color: white;
+}
+
+.subcategory-table img {
+    width: 30px;
+    border-radius: 4px;
+}
+
+td .edit-btn,
+td .delete-btn {
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    margin: 0 5px;
+    background: transparent;
+}
+
+td .delete-btn:hover {
+    background-color: transparent;
+    color: red;
+}
+
+td .edit-btn:hover {
+    background-color: transparent;
+    color: green;
+}
+.filter-dropdown {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 10px;
+}
+
+.filter-dropdown label {
+  font-weight: 300;
+}
+
+.filter-dropdown select {
+  padding: 6px 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}

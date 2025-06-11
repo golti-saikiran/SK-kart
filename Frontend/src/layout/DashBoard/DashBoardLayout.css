@@ -1,0 +1,122 @@
+.dashboard-container {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  min-height: 85vh;
+  /* background: linear-gradient( to bottom right,  rgb(162, 227, 162),    #eca1dc, orange  ); */
+}
+
+.sidebar {
+  width: 15vw;
+  margin-left: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  padding: 20px;
+}
+
+.hideMenu {
+  display: none;
+}
+
+.sidebar h3 {
+  margin-bottom: 10px;
+  color: var(--color);
+}
+
+.sidebar a {
+  width: 90%;
+  margin: 5px auto;
+  text-decoration: none;
+  color: var(--color);
+  padding: 10px;
+  transition: all 0.3s ease;
+}
+
+.sidebar a:hover {
+  color: black;
+  font-weight: 600;
+  background-color: rgb(152, 223, 243);
+}
+
+.main-content {
+  width: 100vw;
+  min-height: 100%;
+  margin: 15px;
+  border-radius: 20px;
+  background-color: rgba(187, 192, 190, 0.5);
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  width: 100%;
+  height: 100%;
+}
+
+.page-header {
+  background-color: var(--primary-color);
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  padding: 15px 30px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.page-header-button {
+  padding: 8px;
+  margin-right: 40px;
+  background-color: transparent;
+  border-radius: 5px;
+  font-size: 14px;
+  border: 2px solid black;
+  cursor: pointer;
+  position: absolute;
+  right: 50px;
+}
+.page-header-button:hover{
+  border-color: white;
+  color: white;
+}
+
+.togggle-sidebar-icon {
+  font-size: 20px;
+  font-weight: 500;
+  margin-left: 30px;
+  cursor: pointer;
+}
+
+.page-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+  font-family: 'poppins';
+  color: var(--color);
+  text-align: center;
+}
+
+.page-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  margin: 20px auto;
+}
+.showMenu{
+  font-size: 32px;
+  cursor: pointer;
+  position: absolute;
+  padding: 5px;
+  left: 40px;
+}
+.showMenu:hover{
+  color: white;
+}

@@ -1,0 +1,89 @@
+
+.app-footer {
+  background-color: #1f1f1f;
+  color: white;
+  padding: 30px 20px 10px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.footer-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 20px;
+}
+
+.footer-brand h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.footer-brand p {
+  font-size: 12px;
+  color: #ccc;
+  font-weight: 300;
+}
+
+.footer-links h4,
+.footer-socials h4 {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 8px;
+}
+
+.footer-links a {
+  color: #ccc;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: white;
+}
+
+.footer-socials  {
+  font-size: 18px;
+  margin-right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.footer-social-icons{
+    display: flex;
+    gap: 15px;
+}
+
+.footer-socials a {
+  color: white;
+  border: 1px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  border-radius: 3px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.footer-socials a:hover {
+  border-radius: 50%;
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 13px;
+  color: #aaa;
+  border-top: 1px solid #333;
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}

@@ -1,0 +1,32 @@
+.products-list-container{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+.product-filter-bar {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: end;
+    gap: 1rem;
+    margin: 1rem;
+}
+
+.product-filter-bar select {
+   padding: 6px 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.product-cards-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin: 0 auto;
+
+}

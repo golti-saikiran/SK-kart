@@ -1,0 +1,248 @@
+.cart-page {
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+    width: 90%;
+    margin: auto;
+justify-content: center;
+}
+
+.cart-left {
+    flex: 1;
+    background-color: #f9f9f9;
+    overflow-y: auto;
+    max-height: 90vh;
+    min-width: 60%;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+}
+
+.cart-heading {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.cart-item-card {
+    position: relative;
+    /* Add this */
+    display: flex;
+    margin-bottom: 15px;
+    padding: 5px;
+    /* background: white; */
+
+    /* box-shadow: 0 0 5px #ccc; */
+    border-bottom: 1px solid #b8b5b5;
+}
+
+.cart-item-card:hover {
+    box-shadow: 0 0 5px #ccc;
+    background-color: white;
+    border-radius: 8px;
+}
+
+.cart-checkbox {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.cart-img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-right: 15px;
+    border-radius: 6px;
+}
+
+.cart-details {
+    flex: 1;
+}
+
+.cart-details h4 {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    margin-bottom: 5px;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.quantity-controls span {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.inc-dec-buttons {
+    padding: 4px 10px;
+    font-size: 16px;
+    border-radius: 50%;
+    background-color: transparent;
+    border-color: rgb(95, 95, 255);
+    outline: none;
+    color: blue;
+}
+
+.inc-dec-buttons:hover {
+    background-color: rgb(95, 95, 255);
+    color: white;
+    outline: none;
+}
+
+.remove-btn {
+    color: var(--color);
+    background-color: transparent;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.remove-btn:hover {
+    color: red;
+}
+
+.cart-right {
+    width: 40%;
+    gap: 5px;
+  
+}
+.address-section {
+    margin-bottom: 20px;
+
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    background: white;
+    box-shadow: 0 0 5px #ccc;
+    border-radius: 5px;
+
+
+}
+
+.address-section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+}
+
+.cart-add-address-button {
+    width: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    height: fit-content;
+    padding: 4px;
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.cart-add-address-button:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+
+
+.address-section h3 {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.address-section-cards {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+        max-height: 350px;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+}
+
+
+.cart-address-card {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    background: white;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    box-shadow: 0 0 5px #ccc;
+}
+
+.cart-address-card p {
+    margin: 5px 0px;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.cart-address-card p {
+    font-weight: 400;
+}
+
+
+.cart-address-card.selected {
+    border-color: #007bff;
+    background-color: #e6f0ff;
+}
+
+.price-summary {
+    background: white;
+    padding: 10px;
+    border-radius: 6px;
+    box-shadow: 0 0 5px #ccc;
+}
+
+.price-summary h3 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.price-summary p {
+    margin: 8px 0;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.price-summary p strong {
+    font-weight: 600;
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: green;
+    color: white;
+    font-size: 16px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.checkout-btn.disabled {
+    background-color: gray;
+    cursor: not-allowed;
+}

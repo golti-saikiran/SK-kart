@@ -1,0 +1,89 @@
+.address-card{
+    background: white;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    width: 40%;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    gap: 2rem;
+    height: 10rem;
+    padding: 1rem 2rem; 
+}
+.address-card:hover{
+    background-color: #eee;
+
+}
+.address-info{
+    width :90%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;   
+    gap: 0.5rem;
+}
+.address-info p {
+    margin: 0px;
+}
+.address-name{
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+    margin:5px auto
+}
+.address-line{
+    font-size: 14px;
+    font-weight: 400;
+    color: #444;
+    margin: 5px auto;
+}
+
+
+
+
+.address-actions{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    gap: 1rem;
+    height: 100%;
+}
+.address-edit-btn{
+    background: transparent;
+    border: 1px solid #0b79ef;
+    color: #0b79ef;
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.address-edit-btn:hover{
+    background-color: #0b79ef;
+    color: white;
+}
+
+.address-delete-btn{
+    background: transparent;
+    border: 1px solid rgb(247, 40, 40);
+    color: rgb(247, 40, 40);
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.address-delete-btn:hover{
+    background-color: rgb(247, 40, 40);
+    color: white;
+}

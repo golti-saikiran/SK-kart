@@ -1,0 +1,285 @@
+.container {
+    height: 600px;
+    width: min(850px, 90vw);
+    margin: 40px auto;
+    position: relative;
+    box-shadow: 10px 10px 10px -1px var(--shadow),
+        -10px -10px 10px -1px var(--second-shadow);
+    border-radius: 40px;
+    overflow: hidden;
+}
+
+.form-box {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    /* background-color: var(--bg-color); */
+    z-index: 1;
+    /* transition: 0.6s ease-in-out 1.2s visibility 0s 1s; */
+}
+
+.container.active .form-box {
+    right: 50%;
+}
+
+.form-box.register {
+    visibility: hidden;
+}
+
+.container.active .form-box.register {
+    visibility: visible;
+}
+
+.form-box.login {
+    visibility: visible;
+}
+
+.container.active .form-box.login {
+    visibility: hidden;
+}
+
+.signup-form {
+    width: 100%;
+    padding: 40px;
+}
+
+.login-form {
+    width: 100%;
+    padding: 40px;
+}
+
+.form-heading {
+    font-size: 36px;
+    margin: 10px 0;
+}
+
+.success {
+    margin: 0px 0px;
+    font-size: 14px;
+    min-height: 10;
+    color: green;
+}
+
+.heading-icon {
+    font-size: 50px;
+    font-weight: 800;
+    margin: 10px 0;
+}
+
+.form-input {
+    position: relative;
+}
+
+.form-input input {
+    width: 100%;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 13px 50px 13px 20px;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    border-radius: 8px;
+    caret-color: black;
+    z-index: 3;
+    margin: 5px 0px;
+}
+
+.form-input input::placeholder {
+    color: #888;
+    font-weight: 400;
+}
+
+.form-icons {
+    position: absolute;
+    right: 20px;
+    top: 25px;
+    transform: translateY(-50%);
+    font-size: 20px;
+    font-weight: 500;
+    color: #888;
+}
+
+.form-icons.password {
+    cursor: pointer;
+}
+
+.forgot-password {
+    margin: -15px 0 15px;
+}
+
+.forgot-password {
+    font-size: 14.5px;
+    text-decoration: none;
+    color: #333;
+}
+
+.btn {
+    width: 100%;
+    height: 48px;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px;
+    background: var(--primary-color);
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #fff;
+    margin-top: 5px;
+}
+
+.btn:disabled {
+    background: #cad5f1;
+    color: gray;
+    cursor: not-allowed;
+}
+
+.signup-form a {
+    font-size: 14.5px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+}
+
+.social-icons a {
+    display: inline-flex;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    margin: 0 8px;
+    font-size: 24px;
+    text-decoration: none;
+    color: var(--color);
+}
+
+.toggle-box {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    /* background: #9aaddf; */
+}
+
+.toggle-box::before {
+    content: '';
+    position: absolute;
+    left: -250%;
+    width: 300%;
+    height: 100%;
+    border-radius: 150px;
+    background: var(--primary-color);
+    /* border: 2px solid black; */
+    z-index: 2;
+    transition: 1.8s ease-in-out;
+}
+
+.container.active .toggle-box::before {
+    left: 50%;
+
+}
+
+.toggle-panel {
+    width: 50%;
+    position: absolute;
+    /* background-color: seagreen; */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    z-index: 2;
+    transition: 0.6s ease-in-out;
+}
+
+.toggle-panel.toggle-left {
+    left: 0;
+    transition-delay: 1.2s;
+}
+
+.container.active .toggle-panel.toggle-left {
+    left: -50%;
+    transition-delay: .6s;
+}
+
+.container.active .toggle-panel.toggle-right {
+    right: 0;
+    transition-delay: 1.2s;
+}
+
+.toggle-panel.toggle-right {
+    right: -50%;
+    transition-delay: 0.6s;
+}
+
+.toggle-panel p {
+    margin-bottom: 20px;
+}
+
+.register-btn {
+    width: 160px;
+    height: 46px;
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    box-shadow: none;
+}
+
+@media(max-width:700px) {
+    .container {
+        height: calc(100vh - 20px);
+    }
+
+    .form-box {
+        bottom: 0;
+        width: 100%;
+        height: 70%;
+        /* padding: 10px; */
+    }
+
+    .container.active .form-box {
+        right: 0;
+        bottom: 30%;
+    }
+
+    .toggle-box::before {
+        left: 0;
+        top: -270%;
+        width: 100%;
+        height: 300%;
+        border-radius: 20vw;
+    }
+
+    .container.active .toggle-box::before {
+        top: 70%;
+        left: 0;
+    }
+
+    .toggle-panel {
+        width: 100%;
+        height: 30%;
+    }
+
+    .toggle-panel.toggle-left {
+        top: 0;
+    }
+
+    .container.active .toggle-panel.toggle-left {
+        top: -30%;
+        left: 0;
+    }
+
+    .toggle-panel.toggle-right {
+        right: 0;
+        bottom: -30%;
+    }
+
+    .container.active .toggle-panel.toggle-right {
+        bottom: 0;
+    }
+}

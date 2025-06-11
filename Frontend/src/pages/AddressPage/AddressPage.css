@@ -1,0 +1,32 @@
+.address-list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    gap: 20px;
+}
+.address-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    gap: 10px;
+}
+.address-form input{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    caret-color: black;
+    font-size: 16px;
+}
+.address-form input:focus{
+    border-color: #007bff;
+    outline: none;
+}   
+.address-form input:hover{
+  background-color: #f0f0f0;
+}   

@@ -1,0 +1,25 @@
+
+.logo img {
+    height: 70px;
+    width: 150px;
+    position: absolute;
+    top: 3px;
+    left: 50px;
+}
+
+@media only screen and (max-width: 1100px) {
+    .logo {
+        /* margin: 0 60px; */
+    }
+
+    .logo img {
+        height: 50px;
+        width:100px
+    }
+}
+
+@media (max-width:600px) {
+    .logo {
+        /* margin: 0 20px; */
+    }
+}

@@ -1,0 +1,121 @@
+.product-card {
+    width: 200px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: white;
+    flex-shrink: 0;
+    transition: transform 0.2s;
+    max-height: 280px;
+    padding-bottom: 10px;
+    border: 1px solid rgb(159, 156, 156);
+    cursor: pointer;
+}
+
+.product-image {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 6px;
+    border-radius: 10px;
+    overflow: hidden
+}
+
+.product-image img {
+    transition: transform 0.5s;
+    image-fit: cover;
+    width: 100%;
+    height: 150px;
+}
+
+.product-card:hover {
+    .product-image img {
+        transform: scale(1.09);
+    }
+
+    /* box-shadow: var(--box-shadow); */
+}
+
+.product-details {
+    padding: 0px 10px 0px 10px;
+    text-align: start;
+
+}
+
+.delivery-badge {
+    font-size: 10px;
+    color: black;
+    padding: 0px;
+    margin-bottom: 7px;
+    gap: 0.25rem;
+}
+
+.product-title {
+    overflow: hidden;
+    color: rgb(31, 31, 31);
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 18px;
+    width: 100%;
+    height: 36px;
+    margin: 0px;
+    margin-bottom: 6px;
+    text-wrap: wrap;
+}
+
+.product-quantity {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 26px;
+    font-size: 12px;
+}
+
+.product-price-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 32px;
+
+}
+
+.product-price {
+    font-size: 12px;
+    font-weight: 600;
+    color: #444;
+    display: flex;
+    align-items: center;
+}
+
+.add-to-cart-button {
+    width: 66px;
+    height: 31px;
+    background-color: transparent;
+    color: #5ea9f9;
+    border: 1px solid #5ea9f9;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.item-added-button {
+    background-color: #5ea9f9;
+    border: none;
+    color: white;
+    gap: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+
+.item-added-button button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    height: 100%;
+    font-size: 14px;
+    color: white;
+    cursor: pointer;
+}

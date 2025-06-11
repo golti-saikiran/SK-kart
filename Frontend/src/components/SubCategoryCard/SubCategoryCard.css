@@ -1,0 +1,43 @@
+
+.subcat-container {
+  background: white;
+  cursor: pointer;
+  width: 150px;
+  min-width: 100px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  transition: all 0.3s ease;
+  border-radius: 10px;
+}
+
+.subcat-container:hover {
+  background: #b4d8fe;
+  box-shadow: 5px 5px 5px -1px var(--shadow),
+    -5px -5px 5px -1px var(--second-shadow);
+
+}
+
+.subcat-container p {
+  margin: 0;
+  font-size: 14px;
+  text-align: center;
+  color: #333;
+  font-weight: 400;
+}
+
+
+.subcategory-image {
+  width: 50px;
+  object-fit: cover;
+
+}
+
+
+.subcat-container.active {
+  background-color: #5ea9f9;
+  color: white;
+  font-weight: 600;
+}

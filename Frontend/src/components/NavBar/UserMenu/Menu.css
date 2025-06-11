@@ -1,0 +1,109 @@
+.user-menu-container {
+    position: relative;
+}
+
+.user-menu-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: var(--color);
+    margin: 0px 20px;
+    padding: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.user-menu-list {
+    position: absolute;
+    top: 25px;
+    right: 20px;
+    width: 200px;
+    /* height: 200px; */
+    padding: 10px;
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px -1px var(--shadow), -5px 0px 5px -1px var(--second-shadow);
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+
+.user-menu-logo {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-menu-button:hover {
+    color: var(--hover-color);
+}
+
+.user-menu-list li a {
+    text-decoration: none;
+    color: black;
+    
+}
+.user-menu-list li:hover{
+    color: black;
+    font-weight: 600;
+    background-color: rgb(152, 223, 243);
+}
+
+.user-menu-list li {
+    list-style: none;
+    padding: 5px 0;
+    letter-spacing: 1.5px;
+    margin: 2px 10px;
+    text-transform: capitalize;
+    cursor: pointer;
+    padding-left: 10px;
+}
+
+.user-menu-list li a:hover {
+    color: var(--hover-color);
+    background-color: var(--hover-bg-color);
+    border-radius: 5px;
+}
+
+.user-menu-list li a.active {
+    color: var(--hover-color);
+    background-color: var(--hover-bg-color);
+    border-radius: 5px;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 5px;
+    cursor: pointer;
+    padding: 15px 10px;
+    font-weight: 700;
+    border-bottom: 1px solid gray;
+}
+.login-btn{
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+@media screen and (max-width: 500px) {
+    .user-menu-button {
+        font-size: 16px;
+    }
+
+}

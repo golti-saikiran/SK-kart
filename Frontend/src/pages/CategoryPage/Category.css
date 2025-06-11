@@ -1,0 +1,151 @@
+.category-form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  justify-content: center;
+  align-items: center;
+}
+
+.category-form input[type="text"],
+.category-form select {
+  margin-top: 3px;
+  padding: 6px;
+  width: 90%;
+  box-sizing: border-box;
+  caret-color: black;
+  font-size: 1em;
+}
+
+.image-preview {
+  margin: 0;
+  text-align: center;
+  display: flex;
+  min-height: min-content;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 4px;
+  width: 100%;
+}
+.image-preview p{
+  margin: 0;
+  font-size: 1em;
+  color: black;
+}
+
+.image-space {
+  width: 200px;
+  height: 150px;
+  border: 1px dashed black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.upload-image-button {
+  background-color: rgb(156, 242, 80);
+  padding: 8px;
+  width: 150px;
+  font-size: 1em;
+  margin-left: 30px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.upload-image-button:disabled {
+  background-color: rgb(198, 198, 198);
+  color: black;
+}
+
+.upload-image-button:hover {
+  border: 2px solid rgb(21, 243, 95);
+  background-color: transparent;
+}
+
+.image-uploader-input {
+  visibility: hidden;
+}
+
+
+button[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  width: 150px;
+  font-size: 1em;
+  margin-left: 30px;
+  border-radius: 5px;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.category-card {
+  position: relative;
+  width: min(25%, 150px);
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: 0.3s ease-in-out;
+  margin: 10px;
+}
+
+.category-card:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.category-image {
+  width: 100%;
+  object-fit: cover;
+}
+
+
+
+.category-actions {
+  display: flex;
+  width: 100%;
+
+}
+
+.category-actions button {
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  color: white;
+  display: flex;
+  width: 50%;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit-btn {
+  background-color: #3498db;
+}
+
+.edit-btn:hover {
+  background-color: #2980b9;
+}
+
+.delete-btn {
+  background-color: #e74c3c;
+}
+
+.delete-btn:hover {
+  background-color: #c0392b;
+}
+
+.category-grid {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  margin: 10px auto;
+  gap: 20px;
+}

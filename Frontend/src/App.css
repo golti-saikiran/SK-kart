@@ -1,0 +1,122 @@
+/* =======================
+   Global Reset & Defaults
+========================== */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--color);
+  overflow-x: hidden;
+  padding: 0;
+  scrollbar-width: thin;
+  /* Firefox */
+}
+
+/* =======================
+   Scrollbar Styling (Chrome/WebKit)
+========================== */
+body::-webkit-scrollbar {
+  width: 6px;
+}
+
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+  border-radius: 10px;
+}
+
+/* =======================
+   Default Theme Variables (optional)
+========================== */
+:root {
+  --color: #111;
+  --bg-color: #f2f3f7;
+  --shadow: #606060;
+  --bg-color-hover: #aaa;
+  --second-shadow: rgba(255, 255, 255, 0.7);
+  --box-shadow: 10px 10px 10px -1px var(--shadow),
+    -10px -10px 10px -1px var(--second-shadow);
+  --primary-color: #7494ec;
+
+  --white: #fff;
+  --black: #000;
+  --grey: #808080;
+  --light-grey: #d3d3d3;
+  --dark-grey: #696969;
+  --blue: #0000ff;
+  --red: #ff0000;
+  --green: #008000;
+  --yellow: #ffff00;
+}
+
+/* =======================
+   Dark Theme
+========================== */
+[data-theme="dark"] {
+  --color: #fff;
+  --bg-color: #333;
+  --shadow: #585555;
+  --bg-color-hover: #555;
+  --second-shadow: rgba(1, 1, 1, 0.7);
+  --box-shadow: 10px 10px 10px -1px var(--shadow),
+    -10px -10px 10px -1px var(--second-shadow);
+  --primary-color: #7494ec;
+
+  --white: #fff;
+  --black: #000;
+  --grey: #808080;
+  --light-grey: #d3d3d3;
+  --dark-grey: #696969;
+  --blue: #0000ff;
+  --red: #ff0000;
+  --green: #008000;
+  --yellow: #ffff00;
+}
+
+/* =======================
+   Light Theme
+========================== */
+[data-theme="light"] {
+  --color: #111;
+  --bg-color: #f2f3f7;
+  --shadow: #606060;
+  --bg-color-hover: #aaa;
+  --second-shadow: rgba(255, 255, 255, 0.7);
+  --box-shadow: 10px 10px 10px -1px var(--shadow),
+    -10px -10px 10px -1px var(--second-shadow);
+  --primary-color: #7494ec;
+  --sidebar-bg-color: #C5AA6A;
+  --danger-color: rgb(251, 9, 9);
+
+  --white: #fff;
+  --black: #000;
+  --grey: #808080;
+  --light-grey: #d3d3d3;
+  --dark-grey: #696969;
+  --blue: #0000ff;
+  --red: #ff0000;
+  --green: #008000;
+  --yellow: #ffff00;
+}
+
+/* Position container 5rem from the top */
+.custom-toast-container {
+  top: 5rem !important;
+
+}
+

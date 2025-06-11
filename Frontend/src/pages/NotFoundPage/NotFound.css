@@ -1,0 +1,22 @@
+.not-found-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 350px;
+    width: min(850px, 90vw);
+    box-shadow: 10px 10px 10px -1px var(--shadow),
+        -10px -10px 10px -1px var(--second-shadow);
+    border-radius: 40px;
+}
+
+.not-found-content {
+    letter-spacing: 1px;
+    font-size: large;
+    font-weight: 400;
+}
+
+.not-found-icon {
+    font-size:100px;
+    font-weight: 900;
+}
