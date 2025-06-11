@@ -1,4 +1,4 @@
-import './navBar.css'
+import './NavBar.css'
 import { FaShoppingCart } from "react-icons/fa";
 import SearchBar from './SearchBar/SearchBar';
 import { useState } from 'react';
