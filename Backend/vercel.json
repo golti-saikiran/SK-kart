@@ -1,6 +1,6 @@
 {
     "version" : 2,
-    "name" : "Blinkit",
+    "name" : "SK-kart",
     "builds" : [
         {
             "src" : "./index.js",

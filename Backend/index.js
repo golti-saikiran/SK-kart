@@ -22,6 +22,9 @@ app.use(cors({
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.get("/", (req, res) => {
+  res.send("Hello from Express on Vercel!");
+});
 app.use('/api/user', UserRouter)
 app.use('/api/category', CategoryRouter)
 app.use('/api/subcategory', subCategoryRoutes)
