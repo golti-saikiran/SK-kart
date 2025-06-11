@@ -13,12 +13,22 @@ const uploadImageRoutes = require('./Routes/uploadImageRoutes')
 
 const app = express();
 
+const allowedOrigins = [
+  process.env.FRONTEND_URL_DEV,
+  process.env.FRONTEND_URL_PROD,
+];
 
 app.use('/uploads', express.static('uploads'));
 app.use(cors({
-  credentials: true,
-  origin: process.env.FRONTEND_URL
-}))
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
+}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
