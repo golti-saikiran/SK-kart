@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import DashBoardPageLayout from '../../layout/DashBoard/DashBoardPageLayout';
 import './Category.css';
 import AddCategoryModelContent from './AddCategoryModelContent';

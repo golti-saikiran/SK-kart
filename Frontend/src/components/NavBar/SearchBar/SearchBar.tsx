@@ -8,7 +8,7 @@ type SearchProps = {
 }
 const SearchBar = (props: SearchProps) => {
     const navigate = useNavigate()
-    const handleOnFocus = (e:React.FocusEvent<HTMLInputElement, Element>) =>{
+    const handleOnFocus = () =>{
         navigate('/search')
     }
     return (
@@ -17,7 +17,7 @@ const SearchBar = (props: SearchProps) => {
                 className="search-input"
                 placeholder='Search...'
                 value={props.value}
-                onFocus={(e)=> handleOnFocus(e)}
+                onFocus={()=> handleOnFocus()}
                 onChange={()=>{}}
             />
             <button className='search-button'><MdOutlineSearch /></button>

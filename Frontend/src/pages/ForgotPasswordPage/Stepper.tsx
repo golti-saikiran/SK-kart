@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import {  useRef, useState } from "react";
 import './ForgotPasswordPage.css'
 
 interface Step {
@@ -17,21 +17,10 @@ interface StepperProps {
 const Stepper: React.FC<StepperProps> = ({ stepsConfig }) => {
     const [currentStep, setCurrentStep] = useState<number>(0);
     const [isComplete, setIsComplete] = useState<boolean>(false);
-    const [margins, setMargins] = useState<{ marginLeft: number; marginRight: number }>({
-        marginLeft: 0,
-        marginRight: 0,
-    });
+
 
     const stepRef = useRef<(HTMLDivElement | null)[]>([]);
 
-    useEffect(() => {
-        if (stepRef.current.length > 0) {
-            setMargins({
-                marginLeft: stepRef.current[0]?.offsetWidth! / 2 || 0,
-                marginRight: stepRef.current[stepsConfig.length - 1]?.offsetWidth! / 2 || 0,
-            });
-        }
-    }, [currentStep, stepsConfig.length]);
 
     const handleNext = () => {
         setCurrentStep((prevStep) => {

@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import HomePage from "../pages/HomePage/HomePage"
 import AboutUsPage from "../pages/AboutPage/AboutUsPage"
-import ProductsPage from "../pages/ProductsPage/ProductsPage"
 import ProductInfoPage from "../pages/ProductInfoPage/ProductInfoPage"
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage"
 import MainLayout from "../layout/MainLayout"
@@ -71,14 +70,12 @@ const AppRoutes: React.FC = () => {
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="aboutus" element={<AboutUsPage />} />
           <Route path="products" >
-            <Route index element={<ProductsPage />} />
             <Route path=":id" element={<ProductInfoPage />} />
           </Route>
           <Route path="/dashboard" element={<DashBoard />} >
             {roleBasedRoutes}
           </Route>
         </Route>
-        <Route path="/verify-email" element={<ProductsPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes >

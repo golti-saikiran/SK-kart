@@ -9,18 +9,15 @@ interface EmailStepProps {
 }
 
 const EmailStep: React.FC<EmailStepProps> = ({ onNext, email, setEmail }) => {
-    const [isValidEmail, setIsValidEmail] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
     const [loading, setLoading] = useState(false);
 
     const validateEmail = () => {
         let regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{1,}$/;
         if (regex.test(email)) {
-            setIsValidEmail(true)
             setErrorMessage("")
             return true
         } else {
-            setIsValidEmail(false)
             setErrorMessage("Invalid Email address");
             return false
         }
