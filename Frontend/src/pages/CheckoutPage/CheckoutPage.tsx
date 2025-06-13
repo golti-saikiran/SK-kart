@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import useStore from "../../Store/store";
-import { CartItem, AddressDetails, ProductType } from "../../utils/Types";
+import { CartItem, AddressDetails } from "../../utils/Types";
 import "./CheckoutPage.css";
 import { toast } from "react-toastify";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
