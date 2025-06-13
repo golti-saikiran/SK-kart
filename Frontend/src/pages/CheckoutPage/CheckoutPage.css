@@ -6,16 +6,16 @@
   margin: auto;
 }
 
-.checkout-left {
+.checkout-left,
+.checkout-right {
   flex: 1;
-  background: #f9f9f9;
   padding: 15px;
   border-radius: 8px;
-  box-shadow: 0 0 5px #ccc;
   overflow-y: auto;
 }
 
-.checkout-left h2, .checkout-address h3 {
+.checkout-left h2,
+.checkout-address h3 {
   margin-bottom: 10px;
 }
 
@@ -23,22 +23,31 @@
   display: flex;
   margin-bottom: 15px;
   gap: 10px;
-  border-bottom: 1px solid #ddd;
+  border: 1px solid rgb(190, 189, 189);
   padding-bottom: 10px;
 }
 
-.checkout-item img {
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
+.checkout-item h4 {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 10px;
 }
 
-.checkout-address .address-card {
+
+.accordion-body .checkout-address-card {
   background: white;
   padding: 10px;
-  border-radius: 6px;
-  box-shadow: 0 0 5px #ccc;
+  width: 100%;
+  border: 1px solid rgb(190, 189, 189);
   margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+}
+
+.accordion-body .checkout-address-card p {
+  margin: 5px 0px;
 }
 
 .change-address-btn {
@@ -58,12 +67,25 @@
   gap: 20px;
 }
 
-.price-box, .payment-section {
+.price-box,
+.payment-section {
   background: white;
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0 0 5px #ccc;
 }
+
+.price-box h3,
+.payment-section h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+ .price-box p{
+  font-size:16px;
+  font-weight: 300;
+  margin-bottom: 5px;
+ }
 
 .payment-section label {
   display: block;
@@ -100,9 +122,13 @@
 
 .accordion-header h3 {
   margin: 0;
+  font-size: 16px;
+  font-weight: 600;
 }
 
 .accordion-body {
+  width: 90%;
+  margin: 0px auto;
   margin-top: 10px;
 }
 
@@ -115,14 +141,14 @@
 }
 
 .accordion .checkout-item img {
-  width: 70px;
-  height: 70px;
+  width: 100px;
+  height: 100px;
   object-fit: contain;
 }
+
 
 .accordion .address-card {
   background: #f1f1f1;
   padding: 10px;
   border-radius: 6px;
 }
-

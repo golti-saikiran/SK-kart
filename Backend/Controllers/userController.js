@@ -568,7 +568,7 @@ userContollers = {
             });
         }
     },
-        decrementCartItemQuantity: async (req, res) => {
+    decrementCartItemQuantity: async (req, res) => {
         try {
             const { userId, productId } = req.body;
             const user = await UserModel.findById(userId)
@@ -678,6 +678,38 @@ userContollers = {
             })
         }
     },
+    clearCart: async (req, res) => {
+        try {
+            const  userId  = req.params.id;
+
+            const user = await UserModel.findById(userId);
+            if (!user) {
+                return res.status(404).json({
+                    message: "User not found",
+                    error: true,
+                    success: false
+                });
+            }
+
+            user.shopping_cart = []; // ✅ Clear all items
+            await user.save();
+
+            return res.status(200).json({
+                message: "Cart cleared successfully",
+                success: true,
+                error: false,
+                data: user.shopping_cart
+            });
+
+        } catch (error) {
+            return res.status(500).json({
+                message: error.message || error,
+                error: true,
+                success: false
+            });
+        }
+    }
+
 }
 
 module.exports = userContollers

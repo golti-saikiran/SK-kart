@@ -44,11 +44,11 @@ orderController = {
             const newOrder = new OrderModel({
                 ...req.body
             })
-            await newOrder.save()
+            const neworder = await newOrder.save()
             return res.status(200).json({
                 success: true,
-                order_status: req.body,
-                error:false
+                order: neworder,
+                error: false
             })
         }
         catch (err) {

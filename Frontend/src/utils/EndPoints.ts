@@ -17,7 +17,8 @@ export const endpoints = {
         getCartItemsByUserId: "/api/user/get-cart",
         decrementCartItemQuantity: "/api/user/decrement-cart-item",
         incrementCartItemQuantity: "/api/user/increment-cart-item",
-        deleteCartItem: "/api/user/delete-cart-item"
+        deleteCartItem: "/api/user/delete-cart-item",
+        clearCart:"/api/user/clear-cart"
     },
     upload: {
         uploadImage: "/api/upload/uploadimage"

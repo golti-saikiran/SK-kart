@@ -23,6 +23,7 @@ import CategoryDetailsPage from "../pages/CategoryListPage/CategoryDetailsPage"
 import CartPage from "../pages/CartPage/CartPage"
 import SearchPage from "../pages/SearchPage/SearchPage";
 import CheckoutPage from "../pages/CheckoutPage/CheckoutPage";
+import SuccessPage from "../pages/SuccessPage/SuccessPage";
 
 const AppRoutes: React.FC = () => {
   const user = useAuthStore(state => state.user)
@@ -69,6 +70,7 @@ const AppRoutes: React.FC = () => {
           <Route path="/cart" element={<CartPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="aboutus" element={<AboutUsPage />} />
+          <Route path="/success/:id" element={<SuccessPage/>}/>
           <Route path="products" >
             <Route path=":id" element={<ProductInfoPage />} />
           </Route>

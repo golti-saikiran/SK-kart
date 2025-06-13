@@ -35,4 +35,6 @@ router.put('/increment-cart-item', authenticateToken, userContollers.incrementCa
 
 router.delete('/delete-cart-item', authenticateToken, userContollers.deleteCartItem)
 
+router.delete('/clear-cart/:id', authenticateToken, userContollers.clearCart)
+
 module.exports = router

@@ -12,16 +12,21 @@ const OrderSchema = new mongoose.Schema({
     },
     items_ordered: [
         {
-            product: { 
+            product: {
                 type: mongoose.Schema.ObjectId,
                 ref: 'Product',
                 required: true
+            },
+            quantity: {
+                type: Number,
+                required: true,
+                default: 1
             }
         }
     ],
     payment_mode: {
         type: String,
-        enum: ['Cash on Delivery', 'Online Payment'],
+        enum: ['COD', 'UPI', 'CARD'],
         required: true
     },
     address: {
@@ -31,7 +36,7 @@ const OrderSchema = new mongoose.Schema({
     },
     status: {
         type: String,
-        enum: ['Ordered', 'Shipped', 'Delivered', 'Cancelled'],
+        enum: ['Ordered', 'Shipped', 'Delivered', 'Cancelled', 'Pending_payment'],
         default: 'Ordered',
         required: true
     },
@@ -41,7 +46,6 @@ const OrderSchema = new mongoose.Schema({
     },
     deliver_date: {
         type: String,
-        required: true
     }
 
 },
