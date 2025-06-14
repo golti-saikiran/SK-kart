@@ -1,7 +1,8 @@
 import axios from "axios";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { endpoints, base_backend_url } from "../../../utils/EndPoints";
 import { toast } from "react-toastify";
+import OtpInputField from "../../../components/OTPinputField/OtpInputField";
 
 interface OTPStepProps {
     onNext: () => void;
@@ -11,30 +12,18 @@ interface OTPStepProps {
 const OTPStep: React.FC<OTPStepProps> = ({ onNext, email }) => {
     const [input, setInput] = useState(new Array(6).fill(''));
     const [errorMessage, setErrorMessage] = useState('');
-    const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
     const buttonRef = useRef<HTMLButtonElement | null>(null);
+    const inputRefs = useRef<Array<HTMLInputElement | null>>([]);
 
     const disableCondition = input.some((char) => char === "");
 
-    useEffect(() => {
-        inputRefs.current[0]?.focus();
-    }, []);
-
-    const handleOTPChange = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
-        const value = e.target.value;
-        if (isNaN(Number(value))) return;
+    const handleChange = (index: number, value: string) => {
         const newInput = [...input];
-        newInput[index] = value.slice(-1);
+        newInput[index] = value;
         setInput(newInput);
-
-        if (value && index < input.length - 1) {
-            inputRefs.current[index + 1]?.focus();
-        } else if (index === input.length - 1) {
-            buttonRef.current?.focus();
-        }
     };
 
-    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, index: number) => {
+    const handleKeyDown = (index: number, e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === "Backspace" && !input[index] && index > 0) {
             inputRefs.current[index - 1]?.focus();
         }
@@ -58,20 +47,12 @@ const OTPStep: React.FC<OTPStepProps> = ({ onNext, email }) => {
         <>
             <p className="message">An OTP is sent to your registered email</p>
             <div className="emailstep-container">
-                <div className="otp-input-container">
-                    {input.map((value, index) => (
-                        <input
-                            key={index}
-                            ref={(el) => (inputRefs.current[index] = el)}
-                            className="otp-input"
-                            type="text"
-                            maxLength={1}
-                            value={value}
-                            onChange={(e) => handleOTPChange(e, index)}
-                            onKeyDown={(e) => handleKeyDown(e, index)}
-                        />
-                    ))}
-                </div>
+                <OtpInputField
+                    length={6}
+                    values={input}
+                    onChange={handleChange}
+                    onKeyDown={handleKeyDown}
+                />
                 {errorMessage && <p className="error message">{errorMessage}</p>}
                 <button
                     onClick={handleOTPSubmit}

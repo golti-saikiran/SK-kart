@@ -7,6 +7,8 @@ router.get('/getallusers', userContollers.getAllUsersController)
 
 router.post('/register', userContollers.registerUserController)
 
+router.post('/verify-email', userContollers.verifyEmailOtpController)
+
 router.post('/loginuser', userContollers.loginUserController)
 
 router.post('/reset-password-send-otp', userContollers.forgotPasswordController)
@@ -36,5 +38,7 @@ router.put('/increment-cart-item', authenticateToken, userContollers.incrementCa
 router.delete('/delete-cart-item', authenticateToken, userContollers.deleteCartItem)
 
 router.delete('/clear-cart/:id', authenticateToken, userContollers.clearCart)
+
+
 
 module.exports = router

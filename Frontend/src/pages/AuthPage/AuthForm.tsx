@@ -1,6 +1,7 @@
-import { FaGoogle } from "react-icons/fa";
-import { FaFacebookF } from "react-icons/fa6";
-import { FaLinkedinIn, FaGithub, FaRegUser } from "react-icons/fa";
+// import { FaGoogle } from "react-icons/fa";
+// import { FaFacebookF } from "react-icons/fa6";
+// import { FaLinkedinIn, FaGithub } from "react-icons/fa";
+import {  FaRegUser } from "react-icons/fa";
 import { MdMailOutline } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { FaRegEye } from "react-icons/fa";
@@ -18,6 +19,7 @@ import {
 
 import useStore from '../../Store/store'
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router";
 
 export type AuthPropsType = {
     FormType: String
@@ -29,7 +31,8 @@ const AuthForm = ({ FormType }: AuthPropsType) => {
     const isLoginForm = FormType === 'Login'
     const updateUser = useStore(state => state.updateUser);
     const setIsAuthenticate = useStore(state => state.setIsAuthenticate);
-    
+    const navigate = useNavigate()
+
 
     const [showPassword, setShowPassword] = useState(false)
     const [apiError, setApiError] = useState('')
@@ -65,47 +68,69 @@ const AuthForm = ({ FormType }: AuthPropsType) => {
     }
 
 
-    const HandleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setErrors({
-            name: "",
-            password: "",
-            email: "",
-            confirmpassword: "",
+const HandleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  // Reset UI states
+  setErrors({
+    name: "",
+    password: "",
+    email: "",
+    confirmpassword: "",
+  });
+  setApiError("");
+  setFormMessage("");
+
+  // Form validation check
+  if (!isFormValid) {
+    toast.error("Please fill out all required fields correctly.");
+    return;
+  }
+
+  try {
+    const responseData = isLoginForm
+      ? await LoginUser({
+          email: userData.email,
+          password: userData.password,
         })
-        setApiError('')
-        setFormMessage('')
-        if (isFormValid) {
-            try {
-                const responseData = isLoginForm ?
-                    await LoginUser({
-                        email: userData.email,
-                        password: userData.password
-                    }) :
-                    await RegisterUser(userData);
-                updateUser(responseData?.data?.user)
-                if (responseData.data.token) {
-                    localStorage.setItem('token', responseData.data.token);
-                    setIsAuthenticate(true)
-                    toast("Logged in")
-                }
-                if (responseData.data.success) {
-                    setFormMessage(responseData.data.message)
-                    setUserData({
-                        name: "",
-                        password: "",
-                        email: "",
-                        confirmpassword: ""
-                    })
-                } else {
-                    setApiError(responseData?.data?.message)
-                }
-            }
-            catch (err: any) {
-                setApiError(err?.data?.message)
-            }
-        }
-    };
+      : await RegisterUser(userData);
+
+    const data = responseData.data;
+    console.log(data);
+    
+
+    if (data.success) {
+      setFormMessage(data.message);
+      setUserData({
+        name: "",
+        password: "",
+        email: "",
+        confirmpassword: "",
+      });
+
+      if (isLoginForm) {
+        localStorage.setItem("token", data.token);
+        updateUser(data.user);
+        setIsAuthenticate(true);
+        toast.success("Logged in successfully");
+         localStorage.setItem('token',data.token);
+      } else {
+        toast.success("Registered successfully! Please verify OTP.");
+        navigate(`/verify-account?userId=${data.data?.userId}`);
+      }
+
+    } else {
+      setApiError(data.message);
+      toast.error(data.message || "Something went wrong");
+    }
+  } catch (err: any) {
+    const errorMessage = err?.response?.data?.message || "Server error";
+    toast.error(errorMessage);
+    setApiError(errorMessage);
+  }
+};
+
+
     const errorMessage = apiError ? apiError :
         errors.name ? errors.name :
             errors.email ? errors.email :
@@ -172,13 +197,13 @@ const AuthForm = ({ FormType }: AuthPropsType) => {
                 {errorMessage && <p className="error message">{errorMessage}</p>}
                 {/* {isFormError && <p className="error message">{formMessage && formMessage}</p>} */}
                 {formMessage && <p className="success message">{formMessage}</p>}
-                <p>or {isLoginForm ? "Login" : "Register"} with social platforms</p>
-                <div className="social-icons">
+                {/* <p>or {isLoginForm ? "Login" : "Register"} with social platforms</p> */}
+                {/* <div className="social-icons">
                     <a href="#"><FaGoogle /></a>
                     <a href="#"><FaFacebookF /></a>
                     <a href="#"><FaGithub /></a>
                     <a href="#"><FaLinkedinIn /></a>
-                </div>
+                </div> */}
             </form>
         </div>
     )

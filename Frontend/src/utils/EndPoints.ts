@@ -4,6 +4,7 @@ export const endpoints = {
     users: {
         registerUser: "/api/user/register",
         getAllUsers: "/api/user/getallusers",
+        verifyEmail:"/api/user/verify-email",
         loginUser: "/api/user/loginuser",
         sendOtp: "/api/user/reset-password-send-otp",
         verifyOTP: "/api/user/verify-reset-otp",

@@ -9,97 +9,123 @@ const ResetPasswordTemplate = require('../Utils/ResetPasswordTemplate')
 const { uploadImageClodinary } = require("../Utils/UploadImageCloudinary.js")
 
 userContollers = {
+
     registerUserController: async (req, res) => {
         try {
-            const { name, email, password } = req.body
-            console.log(name, email, password);
+            const { name, email, password } = req.body;
 
             if (!name || !email || !password) {
                 return res.status(400).json({
-                    message: "Must required name, email, and password",
+                    message: "Must provide name, email, and password",
                     error: true,
                     success: false,
-                })
+                });
             }
-            const existingUser = await UserModel.findOne({ email })
+
+            const existingUser = await UserModel.findOne({ email });
             if (existingUser) {
                 return res.status(400).json({
-                    message: "Email already exist with different account",
+                    message: "Email already exists with another account",
                     error: true,
                     success: false,
-                })
+                });
             }
+
             const salt = await bcrypt.genSalt(10);
             const hashedPassword = await bcrypt.hash(password, salt);
+
+            const otp = generateOtp(); // e.g., "583921"
+            const expiry = new Date(Date.now() + 20 * 60 * 1000); // 20 minutes from now
+
             const newUser = new UserModel({
                 name,
+                email,
                 password: hashedPassword,
-                email
-            })
-            const newlyaddeduser = await newUser.save()
-            const VerifyEmailUrl = `${process.env.FRONTEND_URL}/verify-email?code=${newlyaddeduser?._id}`
-            const otpSendResponse = await sendmail({
-                sendTo: email,
-                Subject: "User verification Email",
-                Text: `Hi ${name},`,
-                Html: verifyEmailTemplete(VerifyEmailUrl)
-            })
-            if (!otpSendResponse.success) {
+                verify_email_otp: otp,
+                verify_email_otp_expiry: expiry
+            });
+
+            const newlyAddedUser = await newUser.save();
+
+            const emailResponse = await sendmail({
+                sendTo: newlyAddedUser.email,
+                Subject: "Verify Your Email",
+                Text: `Hi ${newlyAddedUser.name},`,
+                Html: verifyEmailTemplete(newlyAddedUser.name,otp)  // Use OTP in the template
+            });
+
+            if (!emailResponse.success) {
                 return res.status(400).json({
-                    message: otpSendResponse.message,
+                    message: emailResponse.message || "Failed to send OTP email",
+                    error: true,
+                    success: false,
+                });
+            }
+
+            return res.status(200).json({
+                message: "User registered. OTP sent to email for verification.",
+                success: true,
+                error: false,
+                data: {
+                    userId: newlyAddedUser._id
+                }
+            });
+
+        } catch (err) {
+            return res.status(500).json({
+                message: err.message || "Error registering the user",
+                error: true,
+                success: false,
+                errorData: err
+            });
+        }
+    },
+
+    verifyEmailOtpController: async (req, res) => {
+        try {
+            const { userId, otp } = req.body;
+
+            const user = await UserModel.findById(userId);
+            if (!user) {
+                return res.status(404).json({
+                    message: "User not found",
                     error: true,
                     success: false
                 });
             }
-            return res.status(200).json({
-                message: "A verification email sent to your email",
-                success: true,
-                error: false,
-                data: {
-                    newlyaddeduser,
-                    otpSendResponse
 
-                }
-            })
+            if (
+                user.verify_email_otp !== otp ||
+                new Date() > new Date(user.verify_email_otp_expiry)
+            ) {
+                return res.status(400).json({
+                    message: "Invalid or expired OTP",
+                    error: true,
+                    success: false
+                });
+            }
+
+            user.verify_email = true;
+            user.verify_email_otp = "";
+            user.verify_email_otp_expiry = "";
+            await user.save();
+
+            return res.status(200).json({
+                message: "Email verified successfully",
+                success: true,
+                error: false
+            });
+
         } catch (err) {
             return res.status(500).json({
-                message: err.message || 'Error to register the user, Please try again...',
+                message: "Error verifying OTP",
                 error: true,
                 success: false,
                 errorData: err
-            })
+            });
         }
     },
-    verifyUserController: async (req, res) => {
-        try {
-            const { code } = req.body
-            const user = await UserModel.findOne({ _id: code })
-            if (!user) {
-                return res.status(400).json({
-                    message: "Invalid code",
-                    error: true,
-                    success: false,
-                })
-            }
-            const updatedUser = await UserModel.updateOne({ _id: code }, {
-                verify_email: true
-            })
-            return res.status(200).json({
-                message: "Email verification done",
-                success: true,
-                error: false,
-                updatedUser
-            })
-        }
-        catch (err) {
-            return res.status(500).json({
-                message: 'Error to verify the user, Please try again...',
-                error: true,
-                success: false,
-                errorData: err
-            })
-        }
-    },
+
     loginUserController: async (req, res) => {
         try {
             const { email, password } = req.body;
@@ -136,8 +162,8 @@ userContollers = {
 
             return res.json({
                 message: "Login successful",
-                error: true,
-                success: false,
+                error: false,
+                success: true,
                 token,
                 user: {
                     _id: updatedUser._id,
@@ -680,7 +706,7 @@ userContollers = {
     },
     clearCart: async (req, res) => {
         try {
-            const  userId  = req.params.id;
+            const userId = req.params.id;
 
             const user = await UserModel.findById(userId);
             if (!user) {

@@ -24,6 +24,7 @@ import CartPage from "../pages/CartPage/CartPage"
 import SearchPage from "../pages/SearchPage/SearchPage";
 import CheckoutPage from "../pages/CheckoutPage/CheckoutPage";
 import SuccessPage from "../pages/SuccessPage/SuccessPage";
+import VerifyAccount from "../pages/VerifyAccountPage/VerifyAccountPage";
 
 const AppRoutes: React.FC = () => {
   const user = useAuthStore(state => state.user)
@@ -65,6 +66,7 @@ const AppRoutes: React.FC = () => {
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
         <Route path="/login" element={<AuthPage />} />
         <Route path="/register" element={<AuthPage />} />
+        <Route path="/verify-account" element={<VerifyAccount />} />
         <Route path="/search" element={<SearchPage />} />
         <Route element={<AuthLayout />}>
           <Route path="/cart" element={<CartPage />} />

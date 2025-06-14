@@ -1,4 +1,5 @@
 import { useState } from "react";
+import './ForgotPasswordPage.css'
 
 type StepConfig = {
     stepTitle: string;

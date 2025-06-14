@@ -1,5 +1,5 @@
 .emailstep-container {
-    width: 50%;
+    width: 100%;
     margin: 4px auto;
     display: flex;
     flex-direction: column;
@@ -11,7 +11,7 @@
     width: 100%;
 }
 
-.input-container input {
+.emailstep-container .input-container input {
     width: 100%;
     font-size: 16px;
     font-weight: 500;
