@@ -26,34 +26,40 @@ export interface ProductType {
 
 }
 
-export interface OrderType {
-    _id?: string;
-    userId: string;
-    items_ordered: [{
-        product?: {
-            _id?: string;
-            productname: string;
-            product_image_url: string;
-            category: CategoryTypes;
-            discount: number;
-            price: number;
 
-        };
-        quantity: number
-    }];
-    payment_mode: string;
-    address: {
-        name:string;
-        address_line:string;
-        city:string;
-        state:string;
-        mobile:number;
-        pincode:number
-    };
-    total_amount: number;
-    ordered_date: string;
-    status: string;
-    deliver_date: string;
+export interface ProductDetails {
+  _id?: string;
+  productname: string;
+  product_image_url: string;
+  category: CategoryTypes;
+  discount: number;
+  price: number;
+}
+
+export interface OrderedItem {
+  product?: ProductDetails | string;
+  quantity: number;
+}
+
+export interface OrderAddress {
+  name: string;
+  address_line: string;
+  city: string;
+  state: string;
+  mobile: number;
+  pincode: number;
+}
+
+export interface OrderType {
+  _id?: string;
+  userId: string;
+  items_ordered: OrderedItem[];
+  payment_mode: string;
+  address: OrderAddress | string;
+  total_amount: number;
+  ordered_date: string;
+  status: string;
+  deliver_date: string;
 }
 export interface CartItem {
     productId: ProductType;

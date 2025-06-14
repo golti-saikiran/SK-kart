@@ -67,11 +67,17 @@ const OrdersPage = () => {
                   <p><strong>Delivery:</strong> {new Date(order.deliver_date).toLocaleDateString()}</p>
                 )}
                 <p><strong>Address:</strong></p>
-                <div className="address-details">
-                  <p><strong>Name:</strong> {order.address.name}</p>
-                  <p><strong>Mobile:</strong> {order.address.mobile}</p>
-                  <p>{order.address.address_line}, {order.address.city}, {order.address.state} - {order.address.pincode}</p>
-                </div>
+                {typeof order.address === "object" && order.address !== null ? (
+                  <div className="address-details">
+                    <p><strong>Name:</strong> {order.address.name}</p>
+                    <p><strong>Mobile:</strong> {order.address.mobile}</p>
+                    <p>
+                      {order.address.address_line}, {order.address.city}, {order.address.state} - {order.address.pincode}
+                    </p>
+                  </div>
+                ) : (
+                  <p>Address: {order.address}</p> // fallback if it's just an ID string
+                )}
                 <button onClick={() => handleReorder(order)} className="reorder-btn">Reorder</button>
               </div>
               <hr />
