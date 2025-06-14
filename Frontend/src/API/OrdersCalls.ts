@@ -17,6 +17,18 @@ const ordersCalls = {
             throw error;
         }
     },
+    getOrdersByUserId: async (userId:string) => {
+        try {
+            const url = `${base_backend_url}${endpoints.orders.getOrderByUserId}/${userId}`;
+            const response = await axios.get(url, {
+                headers: getAuthHeaders(),
+            });
+            return response;
+        } catch (error) {
+            console.error('Error creating new order:', error);
+            throw error;
+        }
+    }
 
 };
 export default ordersCalls;

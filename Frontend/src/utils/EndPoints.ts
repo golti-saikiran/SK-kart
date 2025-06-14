@@ -35,10 +35,10 @@ export const endpoints = {
     },
     orders: {
         placeNewOrder: "/api/order/placeneworder",
-        getOrderByUserId: "/api/order/getorderbyuserid/:id",
+        getOrderByUserId: "/api/order/getorderbyuserid",
         getAllOrders: "/api/order/getallorders",
-        updateOrderById: "/api/order/updateorder/:id",
-        deleteOrderById: "/api/order/deleteorder/:id",
+        updateOrderById: "/api/order/updateorder",
+        deleteOrderById: "/api/order/deleteorder",
         searchOrder: "/api/order/searchorders"
     },
     address: {

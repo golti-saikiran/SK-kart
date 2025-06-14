@@ -21,24 +21,37 @@ orderController = {
         }
     },
     getOrderByUserId: async (req, res) => {
+        const userId = req.params.userId;
+
         try {
-            const orderByUserId = await OrderModel.find({ userId: req.params.id })
-            if (!orderByUserId) {
+            const orderByUserId = await OrderModel.find({ userId })
+                .populate({
+                    path: 'items_ordered.product',
+                    model: 'Product', // Make sure this matches the model name used in `mongoose.model('Product', ...)`
+                    select: 'productname price product_image_url category discount', // Include only fields you need
+                }).populate('address', 'name address_line city pincode mobile state')
+
+            if (!orderByUserId || orderByUserId.length === 0) {
                 return res.status(404).json({
-                    message: 'No Orders found with the searched query'
-                })
+                    message: 'No Orders found with the searched query',
+                    success: false,
+                });
             }
-            return res.status(201).json({
-                "order search status": "success",
-                "available orders": orderByUserId
-            })
+
+            return res.status(200).json({
+                success: true,
+                message: 'Orders fetched successfully',
+                orders: orderByUserId,
+            });
         } catch (err) {
             return res.status(500).json({
                 error: err.message,
-                message: 'Error to search the orders, Please try again...'
-            })
+                message: 'Error to search the orders, Please try again...',
+                success: false,
+            });
         }
     },
+
     placeNewOrder: async (req, res) => {
         try {
             const newOrder = new OrderModel({

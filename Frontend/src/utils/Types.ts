@@ -30,11 +30,26 @@ export interface OrderType {
     _id?: string;
     userId: string;
     items_ordered: [{
-        product: string;
+        product?: {
+            _id?: string;
+            productname: string;
+            product_image_url: string;
+            category: CategoryTypes;
+            discount: number;
+            price: number;
+
+        };
         quantity: number
     }];
     payment_mode: string;
-    address: string;
+    address: {
+        name:string;
+        address_line:string;
+        city:string;
+        state:string;
+        mobile:number;
+        pincode:number
+    };
     total_amount: number;
     ordered_date: string;
     status: string;
