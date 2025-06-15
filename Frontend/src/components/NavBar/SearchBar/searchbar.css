@@ -22,20 +22,3 @@ input:focus {
     outline: none;
     /* width: 18vw; */
 }
-
-.search-button {
-    height: 40px;
-    width: 40px;
-    background-color: var(--primary-color);
-    color: var(--white);
-    font-size: 20px;
-    border: none;
-    text-align: center;
-    transition: all 0.3s ease;
-}
-
-.search-button:hover {
-    background-color: rgba(4, 4, 4, 0.5);
-    font-size: 25px;
-
-}

@@ -8,6 +8,7 @@ import {
 } from "../../utils/Types";
 import "./HomePage.css";
 import ProductCard from "../../components/ProductCard/ProductCard";
+import CategoryCard from "../../components/CategoryCard/CategoryCard";
 
 type GroupedByCategory = {
   [categoryId: string]: {
@@ -67,13 +68,7 @@ const HomePage = () => {
       {/* Category Cards */}
       <div className="category-grid">
         {categories.map((cat: CategoryTypes) => (
-          <Link to={`/category/${cat._id}`} key={cat._id} className="category-card">
-            <img
-              src={cat.category_image_url || "https://via.placeholder.com/100"}
-              alt={cat.category_name}
-              className="category-image"
-            />
-          </Link>
+          <CategoryCard {...cat} />
         ))}
       </div>
 

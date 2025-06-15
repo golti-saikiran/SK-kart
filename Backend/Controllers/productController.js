@@ -6,9 +6,9 @@ productContollers = {
     getAllProducts: async (req, res) => {
         try {
             const allProducts = await ProductModel.find()
-            .populate("category", "category_name category_image_url")
-            .populate("sub_category", "subcategory_name subcategory_image_url")
-            .sort({ createdAt: -1 });
+                .populate("category", "category_name category_image_url")
+                .populate("sub_category", "subcategory_name subcategory_image_url")
+                .sort({ createdAt: -1 });
 
             return res.status(201).json({
                 productCount: allProducts.length,
@@ -49,9 +49,9 @@ productContollers = {
                 })
             }
             return res.status(201).json({
-                data:requiredProduct,
-                success:true,
-                error:false
+                data: requiredProduct,
+                success: true,
+                error: false
             })
         } catch (err) {
             return res.status(500).json({
@@ -125,23 +125,27 @@ productContollers = {
     },
     searchProduct: async (req, res) => {
         try {
-            const searchedProduct = await ProductModel.find(req.query)
-            if (!searchedProduct) {
-                return res.status(404).json({
-                    message: 'No Products found with the searched query'
-                })
+            const { q } = req.query;
+
+            if (!q) {
+                return res.status(400).json({ message: "Search query missing" });
             }
-            return res.status(201).json({
-                "product search status": "success",
-                "available products": searchedProduct
-            })
+
+            const searchedProduct = await ProductModel.find({
+                productname: { $regex: q, $options: "i" }, // case-insensitive partial match
+            });
+
+            return res.status(200).json({
+                products: searchedProduct, // ✅ change to 'products' to match frontend
+            });
         } catch (err) {
             return res.status(500).json({
                 error: err.message,
-                message: 'Error to search the product, Please try again...'
-            })
+                message: "Error searching the product. Please try again...",
+            });
         }
     }
+
 }
 
 module.exports = productContollers

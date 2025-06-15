@@ -1,0 +1,14 @@
+.category-card {
+  position: relative;
+  width: min(25%, 150px);
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: 0.3s ease-in-out;
+  margin: 10px;
+}
+
+.category-card:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}

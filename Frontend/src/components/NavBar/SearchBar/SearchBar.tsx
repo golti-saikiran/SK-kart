@@ -1,28 +1,31 @@
-import { MdOutlineSearch } from "react-icons/md";
-import './searchbar.css'
-import { useNavigate } from "react-router";
+
+import './searchbar.css';
+import React from "react";
 
 type SearchProps = {
-    value: string,
-    setValue: React.Dispatch<React.SetStateAction<string>>
-}
-const SearchBar = (props: SearchProps) => {
-    const navigate = useNavigate()
-    const handleOnFocus = () =>{
-        navigate('/search')
-    }
-    return (
-        <div className="searchbar">
-            <input type='text'
-                className="search-input"
-                placeholder='Search...'
-                value={props.value}
-                onFocus={()=> handleOnFocus()}
-                onChange={()=>{}}
-            />
-            <button className='search-button'><MdOutlineSearch /></button>
-        </div>
-    )
-}
+    value: string;
+    setValue: React.Dispatch<React.SetStateAction<string>>;
+    width: string;
+};
 
-export default SearchBar
+// 🔧 Use forwardRef to pass ref to input
+const SearchBar = React.forwardRef<HTMLInputElement, SearchProps>(
+    ({ value, setValue, width }, ref) => {
+
+        return (
+            <div className="searchbar">
+                <input
+                    type="text"
+                    className="search-input"
+                    placeholder="Search products or categories..."
+                    value={value}
+                    onChange={(e) => setValue(e.target.value)}
+                    style={{ width }}
+                    ref={ref} // ✅ correctly assign ref
+                />
+            </div>
+        );
+    }
+);
+
+export default SearchBar;

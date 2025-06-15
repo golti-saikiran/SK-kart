@@ -1,0 +1,42 @@
+.search-page {
+    width: 100%;
+    margin: 0px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.search-results {
+    width: 90%;
+}
+
+.search-products-container {
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.loading {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #666;
+    margin-top: 2rem;
+}
+
+.no-products-msg {
+    text-align: center;
+    font-weight: 500;
+    margin-top: 2rem;
+}
+
+.section-heading {
+    margin-bottom: 1rem;
+    font-weight: 400;
+    text-align: center;
+}
