@@ -5,21 +5,24 @@ import useStore from '../../Store/store';
 import { FaEdit, FaSave, FaSun, FaMoon, FaUser } from 'react-icons/fa';
 
 const ProfilePage = () => {
-  const [name, setName] = useState('John Doe');
-  const [mobile, setMobile] = useState('123-456-7890');
-  const [image, setImage] = useState('');
-  const [isEditingName, setIsEditingName] = useState(false);
-  const [isEditingMobile, setIsEditingMobile] = useState(false);
-
   const theme = useStore((state) => state.theme);
   const setTheme = useStore((state) => state.setTheme);
+  const user = useStore((state) => state.user)
+
+
+  const [name, setName] = useState(user.name);
+  const [mobile, setMobile] = useState(user.mobile);
+  const [image, setImage] = useState(user.avatar);
+  const [isEditingName, setIsEditingName] = useState(false);
+  const [isEditingMobile, setIsEditingMobile] = useState(false);
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
   };
 
   const handleMobileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setMobile(e.target.value);
+    const value = e.target.value;
+    setMobile(value === '' ? null : Number(value));
   };
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -86,7 +89,7 @@ const ProfilePage = () => {
               <>
                 <input
                   type="text"
-                  value={mobile}
+                  value={mobile ?? ''}
                   onChange={handleMobileChange}
                   className="input-field"
                 />
