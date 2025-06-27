@@ -20,11 +20,12 @@ const allowedOrigins = [
 app.use('/uploads', express.static('uploads'));
 app.use(cors({
   origin: function (origin, callback) {
-    console.log('CORS Origin:', origin);
+    console.log("🔍 Incoming request from:", origin);
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
-      callback(new Error('Not allowed by CORS'));
+      console.error("⛔ Blocked by CORS:", origin);
+      callback(new Error("Not allowed by CORS"));
     }
   },
   credentials: true
