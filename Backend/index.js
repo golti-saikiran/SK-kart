@@ -17,10 +17,10 @@ const allowedOrigins = [
   process.env.FRONTEND_URL_DEV,
   process.env.FRONTEND_URL_PROD,
 ];
-console.log('Allowed Origins:', allowedOrigins);
 app.use('/uploads', express.static('uploads'));
 app.use(cors({
   origin: function (origin, callback) {
+    console.log('CORS Origin:', origin);
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
